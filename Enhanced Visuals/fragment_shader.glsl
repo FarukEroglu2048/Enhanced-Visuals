@@ -31,7 +31,7 @@ float luminance_compression_curve(float input_luminance)
 vec3 tonemapper(vec3 input_color)
 {
     const mat3 xyz_matrix = transpose(mat3(vec3(0.4124, 0.3576, 0.1805), vec3(0.2126, 0.7152, 0.0722), vec3(0.0193, 0.1192, 0.9505)));
-    const mat3 lms_matrix = transpose(mat3(vec3(0.8189330101, 0.3618667424, -0.12888597137), vec3(0.0329845436, 0.9293118715, 0.0361456387), vec3(0.0482003018, 0.2643662691, 0.6338517070)));
+    const mat3 lms_matrix = transpose(mat3(vec3(0.8189330101, 0.3618667424, -0.1288597137), vec3(0.0329845436, 0.9293118715, 0.0361456387), vec3(0.0482003018, 0.2643662691, 0.6338517070)));
     const mat3 oklab_matrix = transpose(mat3(vec3(0.2104542553, 0.7936177850, -0.0040720468), vec3(1.9779984951, -2.4285922050, 0.4505937099), vec3(0.0259040371, 0.7827717662, -0.8086757660)));
 
     const mat3 inverse_xyz_matrix = inverse(xyz_matrix);
