@@ -36,7 +36,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
 
     install(TARGETS enhanced_skyscapes RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/Enhanced Visuals")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    target_compile_definitions(enhanced_visuals PRIVATE "APL=1")
+    target_compile_definitions(enhanced_visuals PRIVATE "LIN=1")
     set_target_properties(enhanced_visuals PROPERTIES OUTPUT_NAME "lin")
 
     install(TARGETS enhanced_visuals LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Enhanced Visuals")
