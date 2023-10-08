@@ -56,6 +56,7 @@ int draw_callback(XPLMDrawingPhase drawing_phase, int is_before, void* callback_
 
     rendering_program->use();
 
+    /*
     int mouse_x;
     int mouse_y;
 
@@ -68,6 +69,7 @@ int draw_callback(XPLMDrawingPhase drawing_phase, int is_before, void* callback_
 
     float saturation_boost = 2.0 * (float(mouse_y) / float(window_height));
     float saturation_compression = 2.0 * (float(mouse_x) / float(window_width));
+    */
 
     rendering_program->setUniform("saturation_boost", float(0.25));
     rendering_program->setUniform("saturation_compression", float(0.025));
