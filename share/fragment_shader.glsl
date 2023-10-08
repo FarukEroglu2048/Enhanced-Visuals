@@ -45,7 +45,7 @@ vec3 srgb_to_oklab(vec3 input_color)
 vec3 oklab_to_srgb(vec3 input_color)
 {
     mat3 oklab_lms_matrix = inverse(mat3(vec3(0.2104542553, 1.9779984951, 0.0259040371), vec3(0.7936177850, -2.4285922050, 0.7827717662), vec3(-0.0040720468, 0.4505937099, -0.8086757660)));
-    mat3 lms_srgb_matrix = inverse(mat3(vec3(0.4122214708, 0.211903498, 0.0883024619), vec3(0.5363325363, 0.6806995451, 0.2817188376), vec3(0.0514459929, 0.1073969566, 0.6299787005)));
+    mat3 lms_srgb_matrix = inverse(mat3(vec3(0.4122214708, 0.2119034982, 0.0883024619), vec3(0.5363325363, 0.6806995451, 0.2817188376), vec3(0.0514459929, 0.1073969566, 0.6299787005)));
 
     vec3 lms_color = oklab_lms_matrix * input_color;
     lms_color = pow(lms_color, vec3(3.0));
