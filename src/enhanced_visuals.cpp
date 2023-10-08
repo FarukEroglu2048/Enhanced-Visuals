@@ -49,12 +49,28 @@ int draw_callback(XPLMDrawingPhase drawing_phase, int is_before, void* callback_
     current_viewport.z -= current_viewport.x;
     current_viewport.w -= current_viewport.y;
 
-    if ((previous_viewport.z != current_viewport.z) || (previous_viewport.w != current_viewport.w)) simulator_framebuffer_texture->image2D(0, gl::GL_RGBA16F, glm::ivec2(current_viewport.z, current_viewport.w), 0, gl::GL_RGBA, gl::GL_FLOAT, nullptr);
+    if ((previous_viewport.z != current_viewport.z) || (previous_viewport.w != current_viewport.w)) simulator_framebuffer_texture->image2D(0, gl::GL_SRGB8_ALPHA8, glm::ivec2(current_viewport.z, current_viewport.w), 0, gl::GL_RGBA, gl::GL_UNSIGNED_BYTE, nullptr);
 
     XPLMBindTexture2d(simulator_framebuffer_texture->id(), 0);
     gl::glCopyTexSubImage2D(gl::GL_TEXTURE_2D, 0, 0, 0, current_viewport.x, current_viewport.y, current_viewport.z, current_viewport.w);
 
     rendering_program->use();
+
+    int mouse_x;
+    int mouse_y;
+
+    XPLMGetMouseLocation(&mouse_x, &mouse_y);
+
+    int window_width;
+    int window_height;
+
+    XPLMGetScreenSize(&window_width, &window_height);
+
+    float saturation_boost = 2.0 * (float(mouse_y) / float(window_height));
+    float saturation_compression = 2.0 * (float(mouse_x) / float(window_width));
+
+    rendering_program->setUniform("saturation_boost", float(0.25));
+    rendering_program->setUniform("saturation_compression", float(0.025));
 
     rendering_vertex_array->drawArrays(gl::GL_TRIANGLES, 0, 6);
     rendering_vertex_array->unbind();
