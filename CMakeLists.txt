@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 project("Enhanced Visuals")
 
 function(add_resource resource destination)
-    configure_file("${resource}" "${destination}" COPYONLY)
+    configure_file("${resource}" "${destination}/${resource}" COPYONLY)
     install(FILES "${resource}" DESTINATION "${CMAKE_INSTALL_PREFIX}/${destination}")
 endfunction()
 
