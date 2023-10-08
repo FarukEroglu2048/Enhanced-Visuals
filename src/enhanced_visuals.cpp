@@ -93,8 +93,8 @@ PLUGIN_API int XPluginStart(char* plugin_name, char* plugin_signature, char* plu
     rendering_program = new globjects::Program();
     rendering_program->ref();
 
-    rendering_vertex_shader = globjects::Shader::fromFile(gl::GL_VERTEX_SHADER, "Resources/plugins/Enhanced Visuals/vertex_shader.glsl");
-    rendering_fragment_shader = globjects::Shader::fromFile(gl::GL_FRAGMENT_SHADER, "Resources/plugins/Enhanced Visuals/fragment_shader.glsl");
+    rendering_vertex_shader = globjects::Shader::fromFile(gl::GL_VERTEX_SHADER, "Resources/plugins/Enhanced Visuals/share/vertex_shader.glsl");
+    rendering_fragment_shader = globjects::Shader::fromFile(gl::GL_FRAGMENT_SHADER, "Resources/plugins/Enhanced Visuals/share/fragment_shader.glsl");
 
     rendering_vertex_shader->ref();
     rendering_fragment_shader->ref();
